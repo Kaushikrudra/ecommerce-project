@@ -1,0 +1,75 @@
+/* Wrapper to center the confirmation box */
+.order-confirmation-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  text-align: center;
+}
+
+/* Main confirmation box */
+.order-confirmation-box {
+  background: #ffffff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.5s ease;
+  max-width: 400px;
+  width: 90%;
+}
+
+/* Optional: use this class if needed to override position-based layout */
+.order-confirmation {
+  background: white;
+  border-radius: 10px;
+  padding: 30px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.order-confirmation h2 {
+  margin-bottom: 15px;
+  font-size: 2rem;
+  color: #28a745;
+}
+
+.order-confirmation p {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.order-confirmation .order-number {
+  font-weight: bold;
+  font-size: 1.3rem;
+  color: #155724;
+  margin-top: 10px;
+}
+
+.order-confirmation button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #28a745;
+  color: white;
+  font-size: 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.order-confirmation button:hover {
+  background-color: #218838;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+

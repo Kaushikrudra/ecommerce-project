@@ -1,0 +1,10 @@
+/* src/components/PageWrapper.css */
+.page-background {
+    background-image: url('https://i.pinimg.com/736x/54/d2/cc/54d2cc7fcb8e807ddcac810da90be067.jpg');
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    padding: 40px 20px;
+    color: white;
+  }
+  

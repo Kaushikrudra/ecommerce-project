@@ -1,0 +1,57 @@
+/* Background and layout */
+.home-container {
+  text-align: center;
+  padding: 50px;
+  padding-top: 120px; /* Prevent content overlap with logo */
+  background-image: url('https://i.pinimg.com/736x/54/d2/cc/54d2cc7fcb8e807ddcac810da90be067.jpg');
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  color: white;
+}
+
+/* Headings */
+.home-title {
+  font-size: 48px;
+  margin-bottom: 20px;
+  color: white;
+}
+
+.home-subtitle {
+  font-size: 24px;
+  margin-bottom: 30px;
+  color: white;
+}
+
+/* Shop Now button */
+.shop-now-button {
+  background-color: #ffffff;
+  color: #000000;
+  padding: 12px 30px;
+  font-size: 18px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.shop-now-button:hover {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+/* Gucci logo positioning */
+.gucci-logo-fixed {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 1000;
+  background-color: white; /* Optional: adds contrast */
+  padding: 5px;
+  border-radius: 8px;
+}
+
+.gucci-logo {
+  width: 90px;
+  height: auto;
+}
