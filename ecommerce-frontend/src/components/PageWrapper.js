@@ -6,12 +6,19 @@ import './PageWrapper.css';
 const PageWrapper = ({ children }) => {
   return (
     <motion.div
-      className="page-background"
+      className="page-background dark-geometric-bg"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
     >
-      {children}
+      <div className="shapes">
+        <div className="shape shape-1"></div>
+        <div className="shape shape-2"></div>
+        <div className="shape shape-3"></div>
+      </div>
+      <div className="page-content-wrapper">
+        {children}
+      </div>
     </motion.div>
   );
 };

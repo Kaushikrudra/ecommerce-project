@@ -1,34 +1,31 @@
 // src/App.js
 import React from 'react';
-import { Routes, Route, useLocation } from 'react-router-dom';
-import { CartProvider } from './context/CartContext';
-import { OrderProvider } from './context/OrderContext';
+import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
+import Footer from './components/Footer';
+import Home from './pages/Home';
 import Products from './pages/Products';
+import Lookbook from './pages/Lookbook';
+import Contact from './pages/Contact';
 import Cart from './pages/Cart';
 import Checkout from './pages/Checkout';
-import Home from './pages/Home';
 import OrderHistory from './pages/OrderHistory';
-import { AnimatePresence } from 'framer-motion';
 
 function App() {
-  const location = useLocation();
-
   return (
-    <OrderProvider>
-      <CartProvider>
-        <Navbar />
-        <AnimatePresence mode="wait" initial={false}>
-          <Routes location={location} key={location.pathname}>
-            <Route path="/" element={<Home />} />
-            <Route path="/products" element={<Products />} />
-            <Route path="/cart" element={<Cart />} />
-            <Route path="/checkout" element={<Checkout />} />
-            <Route path="/orders" element={<OrderHistory />} />
-          </Routes>
-        </AnimatePresence>
-      </CartProvider>
-    </OrderProvider>
+    <>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/products" element={<Products />} />
+        <Route path="/lookbook" element={<Lookbook />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/checkout" element={<Checkout />} />
+        <Route path="/orders" element={<OrderHistory />} />
+      </Routes>
+      <Footer />
+    </>
   );
 }
 

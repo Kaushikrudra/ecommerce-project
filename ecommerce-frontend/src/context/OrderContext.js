@@ -1,13 +1,34 @@
 // src/context/OrderContext.js
-import React, { createContext, useContext, useState, } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
 
+// Create context
 const OrderContext = createContext();
 
+// Custom hook (must be used inside provider)
+export const useOrder = () => {
+  const context = useContext(OrderContext);
+  if (!context) {
+    throw new Error('useOrder must be used within an OrderProvider');
+  }
+  return context;
+};
+
+// Provider
 export const OrderProvider = ({ children }) => {
-  const [orderHistory, setOrderHistory] = useState(() => {
+  const [orderHistory, setOrderHistory] = useState([]);
+
+  // Load from localStorage on mount
+  useEffect(() => {
     const stored = localStorage.getItem('orderHistory');
-    return stored ? JSON.parse(stored) : [];
-  });
+    if (stored) {
+      setOrderHistory(JSON.parse(stored));
+    }
+  }, []);
+
+  // Save to localStorage when orderHistory changes
+  useEffect(() => {
+    localStorage.setItem('orderHistory', JSON.stringify(orderHistory));
+  }, [orderHistory]);
 
   const placeOrder = (items, total, id, paymentMethod = 'PayPal') => {
     const newOrder = {
@@ -17,15 +38,11 @@ export const OrderProvider = ({ children }) => {
       total,
       paymentMethod,
     };
-
-    const updatedHistory = [...orderHistory, newOrder];
-    setOrderHistory(updatedHistory);
-    localStorage.setItem('orderHistory', JSON.stringify(updatedHistory));
+    setOrderHistory((prev) => [...prev, newOrder]);
   };
 
   const clearHistory = () => {
     setOrderHistory([]);
-    localStorage.removeItem('orderHistory');
   };
 
   return (
@@ -34,6 +51,3 @@ export const OrderProvider = ({ children }) => {
     </OrderContext.Provider>
   );
 };
-
-export const useOrder = () => useContext(OrderContext);
-

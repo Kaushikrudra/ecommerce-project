@@ -1,10 +1,25 @@
 /* src/components/PageWrapper.css */
 .page-background {
-    background-image: url('https://i.pinimg.com/736x/54/d2/cc/54d2cc7fcb8e807ddcac810da90be067.jpg');
-    background-size: cover;
-    background-position: center;
-    min-height: 100vh;
-    padding: 40px 20px;
-    color: white;
+  min-height: calc(100vh - 80px); /* Account for header height */
+  padding: 4rem 2rem;
+  color: var(--color-text-primary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.page-content-wrapper {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .page-background {
+    padding: 2rem 1rem;
   }
-  
+}

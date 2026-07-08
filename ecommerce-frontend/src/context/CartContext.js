@@ -1,10 +1,19 @@
 // src/context/CartContext.js
 import React, { createContext, useContext, useState } from 'react';
 
+// Create context
 const CartContext = createContext();
 
-export const useCart = () => useContext(CartContext);
+// Custom hook
+export const useCart = () => {
+  const context = useContext(CartContext);
+  if (!context) {
+    throw new Error('useCart must be used within a CartProvider');
+  }
+  return context;
+};
 
+// Provider
 export const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
 

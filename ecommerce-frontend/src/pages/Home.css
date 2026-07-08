@@ -1,57 +1,453 @@
-/* Background and layout */
-.home-container {
-  text-align: center;
-  padding: 50px;
-  padding-top: 120px; /* Prevent content overlap with logo */
-  background-image: url('https://i.pinimg.com/736x/54/d2/cc/54d2cc7fcb8e807ddcac810da90be067.jpg');
-  background-size: cover;
-  background-position: center;
-  min-height: 100vh;
-  color: white;
+/* src/pages/Home.css */
+
+.home-sections-wrapper {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
 }
 
-/* Headings */
-.home-title {
-  font-size: 48px;
-  margin-bottom: 20px;
-  color: white;
+/* A. Hero Section */
+.hero-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 3rem;
+  border: 1px solid var(--color-border);
+  padding: 4rem;
+  min-height: 550px;
+  background-color: rgba(22, 16, 13, 0.45);
+  backdrop-filter: blur(4px);
 }
 
-.home-subtitle {
-  font-size: 24px;
-  margin-bottom: 30px;
-  color: white;
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
-/* Shop Now button */
-.shop-now-button {
-  background-color: #ffffff;
-  color: #000000;
-  padding: 12px 30px;
-  font-size: 18px;
-  border: none;
-  border-radius: 25px;
-  cursor: pointer;
-  transition: all 0.3s ease;
+.hero-heading {
+  font-size: 5rem;
+  font-weight: 900;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  color: var(--color-text-primary);
+  margin-bottom: 1.5rem;
 }
 
-.shop-now-button:hover {
+.hero-sub {
+  font-size: 0.95rem;
+  color: var(--color-text-secondary);
+  letter-spacing: 0.05em;
+  margin-bottom: 2.5rem;
+  max-width: 450px;
+  text-transform: uppercase;
+}
+
+.hero-cta-btn {
+  background-color: var(--color-accent);
+  color: var(--color-accent-text);
+  border: 1px solid var(--color-accent);
+  padding: 1.25rem 3.5rem;
+  font-size: 0.85rem;
+  font-weight: 800;
+  transition: var(--transition-smooth);
+}
+
+.hero-cta-btn:hover {
+  background-color: transparent;
+  color: var(--color-accent);
+}
+
+.hero-image-container {
+  width: 100%;
+  height: 450px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+}
+
+.hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: var(--transition-smooth);
+}
+
+.hero-image-container:hover .hero-image {
+  transform: scale(1.03);
+}
+
+.hero-image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(10, 10, 10, 0) 60%, rgba(10, 10, 10, 0.4) 100%);
+  pointer-events: none;
+}
+
+/* B. USP Strip */
+.usp-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  padding: 1.5rem 0;
+}
+
+.usp-item {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
   background-color: #000000;
-  color: #ffffff;
+  border: 1px solid var(--color-border);
+  padding: 1.5rem 1.75rem;
+  transition: var(--transition-smooth);
 }
 
-/* Gucci logo positioning */
-.gucci-logo-fixed {
-  position: fixed;
-  top: 10px;
-  left: 10px;
-  z-index: 1000;
-  background-color: white; /* Optional: adds contrast */
-  padding: 5px;
-  border-radius: 8px;
+.usp-item:hover {
+  border-color: var(--color-border-hover);
+  transform: translateY(-2px);
 }
 
-.gucci-logo {
-  width: 90px;
-  height: auto;
+.usp-icon {
+  font-size: 2rem;
+}
+
+.usp-text h4 {
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.25rem;
+}
+
+.usp-text p {
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+}
+
+/* Section Title global streetwear style */
+.section-title {
+  font-size: 1.8rem;
+  font-weight: 900;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 2.5rem;
+  text-align: center;
+  position: relative;
+}
+
+.section-title::after {
+  content: '';
+  display: block;
+  width: 50px;
+  height: 3px;
+  background-color: var(--color-text-primary);
+  margin: 0.75rem auto 0 auto;
+}
+
+/* C. Category Grid */
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.category-card {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+}
+
+.category-image-wrapper {
+  width: 100%;
+  height: 240px;
+  position: relative;
+}
+
+.category-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: var(--transition-smooth);
+}
+
+.category-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(10, 10, 10, 0.45);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 1.5rem;
+  transition: var(--transition-smooth);
+}
+
+.category-name {
+  font-family: var(--font-sans);
+  font-size: 1.1rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: var(--color-text-primary);
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.category-link {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: var(--color-text-primary);
+  border-bottom: 1px solid var(--color-text-primary);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: var(--transition-smooth);
+}
+
+.category-card:hover .category-image {
+  transform: scale(1.08);
+}
+
+.category-card:hover .category-overlay {
+  background: rgba(10, 10, 10, 0.75);
+}
+
+.category-card:hover .category-link {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* D. Trending Products Section */
+.trending-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+}
+
+.trending-card {
+  background-color: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: var(--transition-smooth);
+}
+
+.trending-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--color-border-hover);
+}
+
+.trending-image-wrapper {
+  width: 100%;
+  height: 380px;
+  overflow: hidden;
+  background-color: #121216;
+}
+
+.trending-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: var(--transition-smooth);
+}
+
+.trending-card:hover .trending-image {
+  transform: scale(1.04);
+}
+
+.trending-details {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.trending-name {
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 100%;
+}
+
+.trending-price {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--color-text-secondary);
+  margin-bottom: 1.5rem;
+}
+
+.trending-add-btn {
+  width: 100%;
+  background-color: var(--color-accent);
+  color: var(--color-accent-text);
+  border: 1px solid var(--color-accent);
+  padding: 0.85rem;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  transition: var(--transition-smooth);
+}
+
+.trending-add-btn:hover {
+  background-color: transparent;
+  color: var(--color-accent);
+}
+
+/* E. Promo Banners Row */
+.promo-section {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.promo-card {
+  background-color: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  padding: 3rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 250px;
+  text-align: left;
+  transition: var(--transition-smooth);
+}
+
+.promo-card:hover {
+  border-color: var(--color-border-hover);
+}
+
+.promo-info h3 {
+  font-size: 1.15rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+}
+
+.promo-info p {
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+  margin-bottom: 2rem;
+  min-height: 48px;
+}
+
+.promo-btn {
+  background-color: transparent;
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-text-primary);
+  padding: 0.75rem 2rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  transition: var(--transition-smooth);
+}
+
+.promo-btn:hover {
+  background-color: var(--color-text-primary);
+  color: var(--color-bg-main);
+}
+
+/* F. Instagram Strip */
+.instagram-section {
+  width: 100%;
+}
+
+.insta-title {
+  font-size: 1.1rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.insta-scroll {
+  display: flex;
+  gap: 1.25rem;
+  overflow-x: auto;
+  padding-bottom: 1rem;
+}
+
+.insta-scroll::-webkit-scrollbar {
+  height: 4px;
+}
+
+.insta-item {
+  flex: 0 0 180px;
+  height: 180px;
+  border: 1px solid var(--color-border);
+  overflow: hidden;
+}
+
+.insta-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: var(--transition-smooth);
+}
+
+.insta-item:hover img {
+  transform: scale(1.05);
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .hero-section {
+    padding: 3rem;
+    gap: 2rem;
+  }
+  .hero-heading {
+    font-size: 4rem;
+  }
+  .category-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .trending-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .promo-section {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    grid-template-columns: 1fr;
+    padding: 2.5rem 1.5rem;
+    text-align: center;
+    min-height: auto;
+  }
+  .hero-content {
+    align-items: center;
+  }
+  .hero-heading {
+    font-size: 3.5rem;
+  }
+  .hero-image-container {
+    height: 300px;
+  }
+  .usp-strip {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  .category-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .trending-grid {
+    grid-template-columns: 1fr;
+  }
 }
